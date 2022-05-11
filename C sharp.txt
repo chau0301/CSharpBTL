@@ -1,0 +1,92 @@
+//Show form
+            
+Form frmPHONGBAN = new FrmPHONGBAN();
+frmPHONGBAN.Show();
+
+
+//Box
+MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+//Libray
+using System.Data;
+using System.Data.SqlClient;
+
+//Ketnoi_CSDL
+class Ketnoi_CSDL
+    {
+        public SqlConnection cnn;
+        public SqlCommand cmd;
+        public DataTable dta;
+        public SqlDataAdapter ada;
+
+        public void KetNoi_Dulieu()
+        {
+            string strKetNoi = @"Data Source=!;Initial Catalog=QLNS_QLLUONG;Integrated Security=True";
+            cnn = new SqlConnection(strKetNoi);
+            cnn.Open();
+        }
+
+        public void HuyKetNoi()
+        {
+            if (cnn.State == ConnectionState.Open)
+                cnn.Close();
+        }
+
+        public DataTable Lay_Dulieu(string Sql)
+        {
+            KetNoi_Dulieu();
+            ada = new SqlDataAdapter(Sql, cnn);
+            dta = new DataTable();
+            ada.Fill(dta);
+            return dta;
+        }
+
+        public void Execute(string sql)
+        {
+            KetNoi_Dulieu();
+            cmd = new SqlCommand(sql, cnn);
+            cmd.ExecuteNonQuery();
+            HuyKetNoi();
+        }
+    }
+
+//Replace string connection
+
+//Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+
+//LayData
+        public void LAYDATA_NHANVIEN()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("SELECT * FROM NHANVIEN");
+            dataGrid_NHANVIEN.DataSource = dta;
+        }
+
+
+//add data to comboBox
+        private void addValuesToCBO()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("select * from HANGHOA");
+            cboMAHH.DataSource = dta;
+            cboMAHH.DisplayMember = "MAHH";
+            cboMAHH.ValueMember = "MAHH";
+	  }
+//DataBinding
+ public void DATABINDING()
+        {
+            txtMANV.DataBindings.Clear();
+            txtMANV.DataBindings.Add("Text", dataGrid_NHANVIEN.DataSource, "MANV");
+
+		....
+        }
+//Lay data từ [0][0]
+        {
+            DataTable dta = new DataTable();
+            String sql = $"select DONGIA from HANGHOA where MAHH = '{cboMAHH.Text}'";
+            dta = ketnoi.Lay_Dulieu(sql);
+            txtDONGIA.Text = dta.Rows[0][0].ToString();
+        }
+//
+
+Formload -> laydata; datagrid -> databinding
