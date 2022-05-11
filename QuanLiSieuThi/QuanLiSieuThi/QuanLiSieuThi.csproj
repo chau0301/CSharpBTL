@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C595794-D33A-483D-81D0-E03ED9C5EB61}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLiSieuThi</RootNamespace>
+    <AssemblyName>QuanLiSieuThi</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmBAOCAO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBAOCAO.Designer.cs">
+      <DependentUpon>FrmBAOCAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCHUCVU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCHUCVU.Designer.cs">
+      <DependentUpon>FrmCHUCVU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDANGNHAP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDANGNHAP.Designer.cs">
+      <DependentUpon>FrmDANGNHAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHANGHOA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHANGHOA.Designer.cs">
+      <DependentUpon>FrmHANGHOA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHOADON.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHOADON.Designer.cs">
+      <DependentUpon>FrmHOADON.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHOME.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHOME.Designer.cs">
+      <DependentUpon>FrmHOME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNHACUNGCAP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNHACUNGCAP.Designer.cs">
+      <DependentUpon>FrmNHACUNGCAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNHANVIEN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNHANVIEN.Designer.cs">
+      <DependentUpon>FrmNHANVIEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPHIEUNHAP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPHIEUNHAP.Designer.cs">
+      <DependentUpon>FrmPHIEUNHAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQLTAIKHOAN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQLTAIKHOAN.Designer.cs">
+      <DependentUpon>FrmQLTAIKHOAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HOADON.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HOADON.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ketnoi_CSDL.cs" />
+    <Compile Include="PHIEUNHAP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PHIEUNHAP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLSTDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLSTDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmBAOCAO.resx">
+      <DependentUpon>FrmBAOCAO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCHUCVU.resx">
+      <DependentUpon>FrmCHUCVU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDANGNHAP.resx">
+      <DependentUpon>FrmDANGNHAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHANGHOA.resx">
+      <DependentUpon>FrmHANGHOA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHOADON.resx">
+      <DependentUpon>FrmHOADON.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHOME.resx">
+      <DependentUpon>FrmHOME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNHACUNGCAP.resx">
+      <DependentUpon>FrmNHACUNGCAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNHANVIEN.resx">
+      <DependentUpon>FrmNHANVIEN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPHIEUNHAP.resx">
+      <DependentUpon>FrmPHIEUNHAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQLTAIKHOAN.resx">
+      <DependentUpon>FrmQLTAIKHOAN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HOADON.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HOADON.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PHIEUNHAP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PHIEUNHAP.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="QLSTDataSet.xsc">
+      <DependentUpon>QLSTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLSTDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLSTDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLSTDataSet.xss">
+      <DependentUpon>QLSTDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
