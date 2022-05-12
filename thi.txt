@@ -34,7 +34,7 @@ Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
 this.Close();
 
 #form 4
-
+Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
 public void DATABINDING()
 {
     cboMASC.DataBindings.Clear();
