@@ -1,7 +1,7 @@
 #frm1
 Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
 
-public void LAYDATA_NHANVIEN()
+public void LAYDATA()
         {
             DataTable dta = new DataTable();
             dta = ketnoi.Lay_Dulieu("SELECT * FROM DIEUCHUYEN");
