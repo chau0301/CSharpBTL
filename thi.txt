@@ -1,0 +1,34 @@
+#from 3
+
+using System.Data;
+using System.Data.SqlClient;
+
+Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+
+#btndangnhap
+{
+            ketnoi.KetNoi_Dulieu();
+
+            string TENDANGNHAP = txtTENDN.Text;
+            string MATKHAU = txtMATKHAU.Text;
+
+            string sql_login = $"select TENDN,MATKHAU from HETHONG where TENDN = '{TENDANGNHAP}' and MATKHAU ='{MATKHAU}'";
+            SqlCommand cmd = new SqlCommand(sql_login, ketnoi.cnn);
+
+            SqlDataReader datRed = cmd.ExecuteReader();
+            if (datRed.Read())
+            {
+                //MessageBox.Show("Đăng nhập thành công");
+                MessageBox.Show("Đăng nhập thành công");
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+        }
+
+#btnTHOAT
+this.Close();
