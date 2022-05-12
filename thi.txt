@@ -1,49 +1,59 @@
-CREATE DATABASE THITHU2
-USE THITHU2
+#frm1
+Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
 
-CREATE TABLE TAISAN (
-MATS NVARCHAR(10) NOT NULL PRIMARY KEY,
-TENTS NVARCHAR(50) NOT NULL,
-MALOAITS NVARCHAR(10) NOT NULL,
-NAMSD INT NOT NULL,
-NUOCSX NVARCHAR(50) NOT NULL,
-MADONVI NVARCHAR(10) NOT NULL,
-)
+public void LAYDATA_NHANVIEN()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("SELECT * FROM DIEUCHUYEN");
+            GridView_DIEUCHUYEN.DataSource = dta;
+        }
 
-CREATE TABLE LOAI (
-MALOAITS NVARCHAR(10) NOT NULL PRIMARY KEY,
-TENLOAI NVARCHAR(50) NOT NULL,
-DVIQLY NVARCHAR(50) NOT NULL,
-CHUCNANG NVARCHAR(10) NOT NULL,
-GHICHU NVARCHAR(10) NOT NULL,
-)
+private void addValuesToCBO()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("select * from DIEUCHUYEN");
+            cboMADC.DataSource = dta;
+            cboMADC.DisplayMember = "MADC";
+            cboMADC.ValueMember = "MADC";
 
-CREATE TABLE DONVI(
-MADV NVARCHAR(10) NOT NULL PRIMARY KEY, 
-TENDONVI NVARCHAR(50) NOT NULL,
-NGUOIPT NVARCHAR(50) NOT NULL,
-CHUCNANG NVARCHAR(50) NOT NULL,
-)
+            cboMATS.DataSource = dta;
+            cboMATS.DisplayMember = "MATS";
+            cboMATS.ValueMember = "MATS";
 
-CREATE TABLE DIEUCHUYEN(
-MADC NVARCHAR(10) NOT NULL PRIMARY KEY,
-MATS NVARCHAR(10) NOT NULL,
-NGAYDC DATETIME NOT NULL,
-MADONVI_DEN NVARCHAR(10) NOT NULL,
-MADONVI_DI NVARCHAR(10) NOT NULL,
-TINHTRANH NVARCHAR(20) NOT NULL,
-)
+            cboMADONIV_DEN.DataSource = dta;
+            cboMADONIV_DEN.DisplayMember = "MADONIV_DEN";
+            cboMADONIV_DEN.ValueMember = "MADONIV_DEN";
 
-INSERT INTO DONVI VALUES('DV1',N'ĐƠN VỊ 1', N'NGƯỜI 1','CHỨC NĂNG ĐƠN VỊ 1')
-INSERT INTO DONVI VALUES('DV2',N'ĐƠN VỊ 2', N'NGƯỜI 2','CHỨC NĂNG ĐƠN VỊ 2')
+            cboMADONVI_DI.DataSource = dta;
+            cboMADONVI_DI.DisplayMember = "MADONVI_DI";
+            cboMADONVI_DI.ValueMember = "MADONVI_DI";
 
-INSERT INTO LOAI VALUES('L1',N'LOẠI 1','DV1',N'CN1', N'GHI CHÚ 1')
-INSERT INTO LOAI VALUES('L2',N'LOẠI 2','DV2',N'CN2', N'GHI CHÚ 2')
+            cboTINHTRANG.DataSource = dta;
+            cboTINHTRANG.DisplayMember = "MATS";
+            cboTINHTRANG.ValueMember = "MATS";
+        }
 
-INSERT INTO TAISAN VALUES ('TS1',N'TÀI SẢN 1','L1',5,N'VIETNAM','DV1')
-INSERT INTO TAISAN VALUES ('TS2',N'TÀI SẢN 2','L1',5,N'VIETNAM','DV2')
+public void DATABINDING()
+        {
+            cboMADC.DataBindings.Clear();
+            cboMADC.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+
+            cboMATS.DataBindings.Clear();
+            cboMATS.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+
+            cboMADONIV_DEN.DataBindings.Clear();
+            cboMADONIV_DEN.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+
+            cboMADONVI_DI.DataBindings.Clear();
+            cboMADONVI_DI.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+
+            cboTINHTRANG.DataBindings.Clear();
+            cboTINHTRANG.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+
+        }
 
 
-INSERT INTO DIEUCHUYEN VALUES('DC1','TS1','1-1-2011','DV1','DV2',N'TÌNH TRẠNG 1')
-INSERT INTO DIEUCHUYEN VALUES('DC2','TS2','2-1-2011','DV1','DV2',N'TÌNH TRẠNG 2')
+@@FrmLOAD : addValuesToCBO();
+            LAYDATA_NHANVIEN();
 
+@@DATAGRID : DATABINDING();
