@@ -1,84 +1,18 @@
-#frm1
+########frm3
 Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
-
-public void LAYDATA()
-        {
-            DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu("SELECT * FROM DIEUCHUYEN");
-            GridView_DIEUCHUYEN.DataSource = dta;
-        }
 
 private void addValuesToCBO()
         {
             DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu("select * from DIEUCHUYEN");
-            cboMADC.DataSource = dta;
-            cboMADC.DisplayMember = "MADC";
-            cboMADC.ValueMember = "MADC";
-
-            cboMATS.DataSource = dta;
-            cboMATS.DisplayMember = "MATS";
-            cboMATS.ValueMember = "MATS";
-
-            cboMADONIV_DEN.DataSource = dta;
-            cboMADONIV_DEN.DisplayMember = "MADONIV_DEN";
-            cboMADONIV_DEN.ValueMember = "MADONIV_DEN";
-
-            cboMADONVI_DI.DataSource = dta;
-            cboMADONVI_DI.DisplayMember = "MADONVI_DI";
-            cboMADONVI_DI.ValueMember = "MADONVI_DI";
-
-            cboTINHTRANG.DataSource = dta;
-            cboTINHTRANG.DisplayMember = "MATS";
-            cboTINHTRANG.ValueMember = "MATS";
+            dta = ketnoi.Lay_Dulieu("select * from TAISAN");
+            cboNUOCSX.DataSource = dta;
+            cboNUOCSX.DisplayMember = "NUOCSX";
+            cboNUOCSX.ValueMember = "NUOCSX";
         }
 
-public void DATABINDING()
-        {
-            cboMADC.DataBindings.Clear();
-            cboMADC.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADC");
+##LOAD : addValuesToCBO();
 
-            cboMATS.DataBindings.Clear();
-            cboMATS.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MATS");
-
-            cboMADONVI_DEN.DataBindings.Clear();
-            cboMADONVI_DEN.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADONVI_DEN");
-
-            cboMADONVI_DI.DataBindings.Clear();
-            cboMADONVI_DI.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADONVI_DI");
-
-            cboTINHTRANG.DataBindings.Clear();
-            cboTINHTRANG.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "TINHTRANH");
-        }
-
-
-@@FrmLOAD : addValuesToCBO();
-            LAYDATA_NHANVIEN();
-
-@@DATAGRID : DATABINDING();
-
-
-#them
-            string sql = $"INSERT INTO DIEUCHUYEN VALUES('{cboMADC.Text}','{cboMATS.Text}','{txtNGAYDC.Value.ToString("yyyy-MM-dd")}','{cboMADONVI_DEN.Text}','{cboMADONVI_DI.Text}',N'{cboTINHTRANG.Text}')";
-            ketnoi.Execute(sql.ToUpper());
-            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LAYDATA();
-sua
-            string sql = $"update DIEUCHUYEN set MATS = '{cboMATS.Text}', NGAYDC = '{txtNGAYDC.Value.ToString("yyyy-MM-dd")}', MADONVI_DEN = '{cboMADONVI_DEN.Text}', MADONVI_DI =  '{cboMADONVI_DI.Text}',TINHTRANH = N'{cboTINHTRANG.Text}' where MADC = '{cboMADC.Text}'";
-            ketnoi.Execute(sql.ToUpper());
-            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LAYDATA();
-xoa
-            string sql = $"delte from DIEUCHUYEN where MADC = '{cboMADC.Text}'";
-            ketnoi.Execute(sql.ToUpper());
-            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LAYDATA();
-thoat
-            this.Close();
-
-tao moi
-            cboMADC.Text = "";
-            cboMATS.Text = "";
-            cboMADONVI_DEN.Text = ""; 
-            cboMADONVI_DI.Text = "";
-            cboTINHTRANG.Text = "";
+btntimkiem 
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu($"SELECT * FROM TAISAN where NUOCSX = '{cboNUOCSX.Text}'");
+            GridView_TAISAN.DataSource = dta;
