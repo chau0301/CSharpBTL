@@ -36,19 +36,19 @@ private void addValuesToCBO()
 public void DATABINDING()
         {
             cboMADC.DataBindings.Clear();
-            cboMADC.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+            cboMADC.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADC");
 
             cboMATS.DataBindings.Clear();
-            cboMATS.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+            cboMATS.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MATS");
 
-            cboMADONIV_DEN.DataBindings.Clear();
-            cboMADONIV_DEN.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+            cboMADONVI_DEN.DataBindings.Clear();
+            cboMADONVI_DEN.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADONVI_DEN");
 
             cboMADONVI_DI.DataBindings.Clear();
-            cboMADONVI_DI.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+            cboMADONVI_DI.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADONVI_DI");
 
             cboTINHTRANG.DataBindings.Clear();
-            cboTINHTRANG.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MANV");
+            cboTINHTRANG.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "TINHTRANG");
 
         }
 
