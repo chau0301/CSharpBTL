@@ -48,8 +48,7 @@ public void DATABINDING()
             cboMADONVI_DI.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "MADONVI_DI");
 
             cboTINHTRANG.DataBindings.Clear();
-            cboTINHTRANG.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "TINHTRANG");
-
+            cboTINHTRANG.DataBindings.Add("Text", GridView_DIEUCHUYEN.DataSource, "TINHTRANH");
         }
 
 
@@ -57,3 +56,22 @@ public void DATABINDING()
             LAYDATA_NHANVIEN();
 
 @@DATAGRID : DATABINDING();
+
+
+#them
+            string sql = $"INSERT INTO DIEUCHUYEN VALUES('{cboMADC.Text}','{cboMATS.Text}','{txtNGAYDC.Value.ToString("yyyy-MM-dd")}','{cboMADONVI_DEN.Text}','{cboMADONVI_DI.Text}',N'{cboTINHTRANG.Text}')";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+sua
+            string sql = $"update DIEUCHUYEN set MATS = '{cboMATS.Text}', NGAYDC = '{txtNGAYDC.Value.ToString("yyyy-MM-dd")}', MADONVI_DEN = '{cboMADONVI_DEN.Text}', MADONVI_DI =  '{cboMADONVI_DI.Text}',TINHTRANH = N'{cboTINHTRANG.Text}' where MADC = '{cboMADC.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+xoa
+            string sql = $"delte from DIEUCHUYEN where MADC = '{cboMADC.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+thoat
+            this.Close();
