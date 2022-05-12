@@ -75,3 +75,10 @@ xoa
             LAYDATA();
 thoat
             this.Close();
+
+tao moi
+            cboMADC.Text = "";
+            cboMATS.Text = "";
+            cboMADONVI_DEN.Text = ""; 
+            cboMADONVI_DI.Text = "";
+            cboTINHTRANG.Text = "";
