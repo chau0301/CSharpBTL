@@ -1,134 +1,53 @@
-#from 3
+CREATE DATABASE THITHU2
+USE THITHU2
 
-using System.Data;
-using System.Data.SqlClient;
+CREATE TABLE TAISAN (
+MATS NVARCHAR(10) NOT NULL PRIMARY KEY,
+TENTS NVARCHAR(50) NOT NULL,
+MALOAITS NVARCHAR(10) NOT NULL,
+NAMSD INT NOT NULL,
+NUOCSX NVARCHAR(50) NOT NULL,
+MADONVI NVARCHAR(10) NOT NULL,
+)
 
-Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+CREATE TABLE LOAI (
+MALOAITS NVARCHAR(10) NOT NULL PRIMARY KEY,
+TENLOAI NVARCHAR(50) NOT NULL,
+DVIQLY NVARCHAR(50) NOT NULL,
+CHUCNANG NVARCHAR(10) NOT NULL,
+GHICHU NVARCHAR(10) NOT NULL,
+)
 
-#btndangnhap
-{
-            ketnoi.KetNoi_Dulieu();
+CREATE TABLE DONVI(
+MADV NVARCHAR(10) NOT NULL PRIMARY KEY, 
+TENDONVI NVARCHAR(50) NOT NULL,
+NGUOIPT NVARCHAR(50) NOT NULL,
+CHUCNANG NVARCHAR(50) NOT NULL,
+)
 
-            string TENDANGNHAP = txtTENDN.Text;
-            string MATKHAU = txtMATKHAU.Text;
-
-            string sql_login = $"select TENDN,MATKHAU from HETHONG where TENDN = '{TENDANGNHAP}' and MATKHAU ='{MATKHAU}'";
-            SqlCommand cmd = new SqlCommand(sql_login, ketnoi.cnn);
-
-            SqlDataReader datRed = cmd.ExecuteReader();
-            if (datRed.Read())
-            {
-                //MessageBox.Show("Đăng nhập thành công");
-                MessageBox.Show("Đăng nhập thành công");
-                this.Close();
-
-            }
-            else
-            {
-                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-        }
-
-#btnTHOAT
-this.Close();
-
-#form 4
-Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
-public void DATABINDING()
-{
-    cboMASC.DataBindings.Clear();
-    cboMASC.DataBindings.Add("Text", GridView_TS_SUACHUA.DataSource, "MASC");
-
-    cboMTS.DataBindings.Clear();
-    cboMTS.DataBindings.Add("Text", GridView_TS_SUACHUA.DataSource, "MATS");
-
-    cboTINHTRANG.DataBindings.Clear();
-    cboTINHTRANG.DataBindings.Add("Text", GridView_TS_SUACHUA.DataSource, "TINHTRANG");
-}
-
-private void addValuesToCBO()
-{
-    DataTable dta = new DataTable();
-    dta = ketnoi.Lay_Dulieu("select * from TS_SUACHUA");
-    cboMASC.DataSource = dta;
-    cboMASC.DisplayMember = "MASC";
-    cboMASC.ValueMember = "MASC";
-
-    cboMTS.DataSource = dta;
-    cboMTS.DisplayMember = "MATS";
-    cboMTS.ValueMember = "MATS";
-
-    cboTINHTRANG.DataSource = dta;
-    cboTINHTRANG.DisplayMember = "TINHTRANG";
-    cboTINHTRANG.ValueMember = "TINHTRANG";
-}
-
-public void LAYDATA_TAISANSC()
-        {
-            DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu("SELECT * FROM TS_SUACHUA");
-            GridView_TS_SUACHUA.DataSource = dta;
-        }
-        
-form load:
-addValuesToCBO();
-
-datagrid:
-DATABINDING();
-
-#btnTao 
-            cboMASC.Text = "";
-            cboMTS.Text = "";
-            cboTINHTRANG.Text = "";
-
-#btnTHEM
-            string sql = $"insert into TS_SUACHUA values('{cboMASC.Text}','{cboMTS.Text}', '{txtNGAYNHAN.Value.ToString("yyyy - MM - dd")}','{txtNGAYYC.Value.ToString("yyyy - MM - dd")}','{cboTINHTRANG.Text}')";
-            ketnoi.Execute(sql.ToUpper());
-            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LAYDATA_TAISANSC();
-
-#btnSUA
-            string sql = $"update TS_SUACHUA set MATS = '{cboMASC.Text}', NGAYYC = '{txtNGAYNHAN.Value.ToString("yyyy - MM - dd")}', NGAYNHAN = '{txtNGAYNHAN.Value.ToString("yyyy - MM - dd")}' where MASC = '{cboMASC.Text}'";
-            ketnoi.Execute(sql.ToUpper());
-            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LAYDATA_TAISANSC();
-#btnXOA
-            string sql = $"delete from TS_SUACHUA where MASC = '{cboMASC.Text}'";
-            ketnoi.Execute(sql);
-            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LAYDATA_TAISANSC();
-#btnTHOAT
-            this.Close();
-
-@@@@@@form 5
-Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
-
-private void addValuesToCBO()
-        {
-            DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu("select * from DMTAISAN");
-            cboMADONVI.DataSource = dta;
-            cboMADONVI.DisplayMember = "MADONVI";
-            cboMADONVI.ValueMember = "MADONVI";
-
-            cboTENTS.DataSource = dta;
-            cboTENTS.DisplayMember = "TENTS";
-            cboTENTS.ValueMember = "TENTS";
-        }
-
-#timkiem 
-            string sql = "";
-            if (radMADONVI.Checked)
-            {
-                sql = $"SELECT * FROM DMTAISAN where MADONVI = '{cboMADONVI.Text}'";
-            }
-            else sql = $"SELECT * FROM DMTAISAN where TENTS = N'{cboTENTS.Text}'";
+CREATE TABLE DIEUCHUYEN(
+MADC NVARCHAR(10) NOT NULL PRIMARY KEY,
+MATS NVARCHAR(10) NOT NULL,
+NGAYDC DATETIME NOT NULL,
+MADONVI_DEN NVARCHAR(10) NOT NULL,
+MADONVI_DI NVARCHAR(10) NOT NULL,
+TINHTRANH NVARCHAR(20) NOT NULL,
+)
 
 
-            DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu(sql);
-            GridView_DMTAISAN.DataSource = dta;
 
-#btnTHOAT
-            this.Cloes();
+
+
+INSERT INTO DONVI VALUES('DV1',N'ĐƠN VỊ 1', N'NGƯỜI 1','CHỨC NĂNG ĐƠN VỊ 1')
+INSERT INTO DONVI VALUES('DV2',N'ĐƠN VỊ 2', N'NGƯỜI 2','CHỨC NĂNG ĐƠN VỊ 2')
+
+INSERT INTO LOAI VALUES('L1',N'LOẠI 1','DV1',N'CHÚC NĂNG 1', N'GHI CHÚ 1')
+INSERT INTO LOAI VALUES('L2',N'LOẠI 2','DV2',N'CHÚC NĂNG 2', N'GHI CHÚ 2')
+
+INSERT INTO TAISAN VALUES ('TS1',N'TÀI SẢN 1','L1',5,N'VIETNAM','DV1')
+INSERT INTO TAISAN VALUES ('TS2',N'TÀI SẢN 2','L1',5,N'VIETNAM','DV2')
+
+
+INSERT INTO DIEUCHUYEN VALUES('DC1','TS1','1-1-2011','DV1','DV2',N'TÌNH TRẠNG 1')
+INSERT INTO DIEUCHUYEN VALUES('DC2','TS2','2-1-2011','DV1','DV2',N'TÌNH TRẠNG 2')
+
