@@ -90,3 +90,12 @@ class Ketnoi_CSDL
 //
 
 Formload -> laydata; datagrid -> databinding
+
+//CRV_BAOCAO
+Frm LOAD:
+DataTable dta = new DataTable();
+string sql = $"Select * from TAISAN";
+dta = ketnoi.Lay_Dulieu(sql);
+BAOCAO baocao = new BAOCAO();
+baocao.SetDataSource(dta);
+CRV_BAOCAO.ReportSource = baocao;
