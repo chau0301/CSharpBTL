@@ -32,3 +32,64 @@ Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
 
 #btnTHOAT
 this.Close();
+
+#form 4
+
+public void DATABINDING()
+{
+    cboMASC.DataBindings.Clear();
+    cboMASC.DataBindings.Add("Text", GridView_TS_SUACHUA.DataSource, "MASC");
+
+    cboMTS.DataBindings.Clear();
+    cboMTS.DataBindings.Add("Text", GridView_TS_SUACHUA.DataSource, "MATS");
+
+    cboTINHTRANG.DataBindings.Clear();
+    cboTINHTRANG.DataBindings.Add("Text", GridView_TS_SUACHUA.DataSource, "TINHTRANG");
+}
+
+private void addValuesToCBO()
+{
+    DataTable dta = new DataTable();
+    dta = ketnoi.Lay_Dulieu("select * from TS_SUACHUA");
+    cboMASC.DataSource = dta;
+    cboMASC.DisplayMember = "MASC";
+    cboMASC.ValueMember = "MASC";
+
+    cboMTS.DataSource = dta;
+    cboMTS.DisplayMember = "MATS";
+    cboMTS.ValueMember = "MATS";
+
+    cboTINHTRANG.DataSource = dta;
+    cboTINHTRANG.DisplayMember = "TINHTRANG";
+    cboTINHTRANG.ValueMember = "TINHTRANG";
+}
+
+form load:
+addValuesToCBO();
+
+datagrid:
+DATABINDING();
+
+#btnTao 
+            cboMASC.Text = "";
+            cboMTS.Text = "";
+            cboTINHTRANG.Text = "";
+
+#btnTHEM
+            string sql = $"insert into TS_SUACHUA values('{cboMASC.Text}','{cboMTS.Text}', '{txtNGAYNHAN.Value.ToString("yyyy - MM - dd")}','{txtNGAYYC.Value.ToString("yyyy - MM - dd")}','{cboTINHTRANG.Text}')";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA_TAISANSC();
+
+#btnSUA
+            string sql = $"update TS_SUACHUA set MATS = '{cboMASC.Text}', NGAYYC = '{txtNGAYNHAN.Value.ToString("yyyy - MM - dd")}', NGAYNHAN = '{txtNGAYNHAN.Value.ToString("yyyy - MM - dd")}' where MASC = '{cboMASC.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA_TAISANSC();
+#btnXOA
+            string sql = $"delete from TS_SUACHUA where MASC = '{cboMASC.Text}'";
+            ketnoi.Execute(sql);
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA_TAISANSC();
+#btnTHOAT
+            this.Close();
