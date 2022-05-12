@@ -1,18 +1,9 @@
-########frm3
 Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
 
-private void addValuesToCBO()
-        {
+load:
             DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu("select * from TAISAN");
-            cboNUOCSX.DataSource = dta;
-            cboNUOCSX.DisplayMember = "NUOCSX";
-            cboNUOCSX.ValueMember = "NUOCSX";
-        }
-
-##LOAD : addValuesToCBO();
-
-btntimkiem 
-            DataTable dta = new DataTable();
-            dta = ketnoi.Lay_Dulieu($"SELECT * FROM TAISAN where NUOCSX = '{cboNUOCSX.Text}'");
-            GridView_TAISAN.DataSource = dta;
+            string sql = $"Select * from TAISAN";
+            dta = ketnoi.Lay_Dulieu(sql);
+            BAOCAO baocao = new BAOCAO();
+            baocao.SetDataSource(dta);
+            CRV_BAOCAO.ReportSource = baocao;
