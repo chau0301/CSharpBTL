@@ -64,6 +64,13 @@ private void addValuesToCBO()
     cboTINHTRANG.ValueMember = "TINHTRANG";
 }
 
+public void LAYDATA_TAISANSC()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("SELECT * FROM TS_SUACHUA");
+            GridView_TS_SUACHUA.DataSource = dta;
+        }
+        
 form load:
 addValuesToCBO();
 
