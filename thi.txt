@@ -93,3 +93,35 @@ DATABINDING();
             LAYDATA_TAISANSC();
 #btnTHOAT
             this.Close();
+
+@@@@@@form 5
+Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+
+private void addValuesToCBO()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("select * from DMTAISAN");
+            cboMADONVI.DataSource = dta;
+            cboMADONVI.DisplayMember = "MADONVI";
+            cboMADONVI.ValueMember = "MADONVI";
+
+            cboTENTS.DataSource = dta;
+            cboTENTS.DisplayMember = "TENTS";
+            cboTENTS.ValueMember = "TENTS";
+        }
+
+#timkiem 
+            string sql = "";
+            if (radMADONVI.Checked)
+            {
+                sql = $"SELECT * FROM DMTAISAN where MADONVI = '{cboMADONVI.Text}'";
+            }
+            else sql = $"SELECT * FROM DMTAISAN where TENTS = N'{cboTENTS.Text}'";
+
+
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu(sql);
+            GridView_DMTAISAN.DataSource = dta;
+
+#btnTHOAT
+            this.Cloes();
