@@ -84,3 +84,40 @@ Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
         }
 #thoat
     this.Close();
+
+#frmNHANVIEN
+
+Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+
+public void LAYDATA_NHANVIEN()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("SELECT * FROM NHANVIEN");
+            GridView_NHANVIEN.DataSource = dta;
+        }
+tao moi
+            cboMANV.Text = "";
+            cboMADV.Text = "";
+            txtHOTEN.Text = "";
+            txtNGAYSINH.Value = DateTime.Now;
+            cboGIOITINH.Text = "";
+            txtDIACHI.Text = "";
+            txtDIENTHOAI.Text = "";
+            cboMACV.Text = "";
+them
+            string sql = $"INSERT INTO NHANVIEN VALUES('{cboMANV.Text}','{cboMADV.Text}',N'{txtHOTEN.Text}', '{txtNGAYSINH.Value.ToString("yyyy-MM-dd")}', N'{cboGIOITINH.Text}', N'{txtDIACHI.Text}', '{txtDIENTHOAI.Text}','{cboMACV.Text}')";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA_NHANVIEN();
+sua
+            string sql = $"update NHANVIEN set MADV = '{cboMADV.Text}',HOTEN = N'{txtHOTEN.Text}', NGAYSINH = '{txtNGAYSINH.Value.ToString("yyyy-MM-dd")}', GIOITINH =  N'{cboGIOITINH.Text}', DIACHI = N'{txtDIACHI.Text}', DIENTHOAI = '{txtDIENTHOAI.Text}',MACV = '{cboMACV.Text}' where MANV = '{cboMANV.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA_NHANVIEN();
+xoa
+            string sql = $"delete from NHANVIEN where MANV = '{cboMANV.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA_NHANVIEN();
+thoat
+            this.Close();
