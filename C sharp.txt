@@ -3,10 +3,6 @@
 Form frmPHONGBAN = new FrmPHONGBAN();
 frmPHONGBAN.Show();
 
-
-//Box
-MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
 //Libray
 using System.Data;
 using System.Data.SqlClient;
@@ -91,11 +87,56 @@ class Ketnoi_CSDL
 
 Formload -> laydata; datagrid -> databinding
 
+//datetime
+            myDateTimePicker.Value = DateTime.Now;
+            txtNGAYDC.Value.ToString("yyyy-MM-dd")
+
 //CRV_BAOCAO
-Frm LOAD:
-DataTable dta = new DataTable();
-string sql = $"Select * from TAISAN";
-dta = ketnoi.Lay_Dulieu(sql);
-BAOCAO baocao = new BAOCAO();
-baocao.SetDataSource(dta);
-CRV_BAOCAO.ReportSource = baocao;
+            Frm LOAD:
+            DataTable dta = new DataTable();
+            string sql = $"Select * from TAISAN";
+            dta = ketnoi.Lay_Dulieu(sql);
+            BAOCAO baocao = new BAOCAO();
+            baocao.SetDataSource(dta);
+            CRV_BAOCAO.ReportSource = baocao;
+
+
+//DANGNHAP BTN 
+            ketnoi.KetNoi_Dulieu();
+
+            string TENDANGNHAP = txtTENDANGNHAP.Text;
+            string MATKHAU = txtMATKHAU.Text;
+
+            string sql_login = $"select TENDANGNHAP,MATKHAU from QUYEN_DANGNHAP where TENDANGNHAP = '{TENDANGNHAP}' and MATKHAU ='{MATKHAU}'";
+            SqlCommand cmd = new SqlCommand(sql_login, ketnoi.cnn);
+
+            SqlDataReader datRed = cmd.ExecuteReader();
+            if (datRed.Read())
+            {
+                //MessageBox.Show("Đăng nhập thành công");
+                this.Hide();
+                FrmHOME frm = new FrmHOME();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+//THEM
+            string sql = $"insert into NHACUNGCAP values('{txtMANCC.Text}',N'{txtTENNCC.Text}',N'{txtDIACHI.Text}', '{txtSDT.Text}', '{txtEMAIL.Text}')";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+//SUA
+            string sql = $"update NHACUNGCAP set TENNCC = N'{txtTENNCC.Text}',DIACHI = N'{txtDIACHI.Text}', DIENTHOAI = '{txtSDT.Text}', EMAIL = '{txtEMAIL.Text}' where MANCC = '{txtMANCC.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+//XOA
+            string sql = $"delete from NHACUNGCAP where MANCC = '{txtMANCC.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+
