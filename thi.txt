@@ -121,3 +121,11 @@ xoa
             LAYDATA_NHANVIEN();
 thoat
             this.Close();
+
+
+public void LAYDATA()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("SELECT * FROM NHANVIEN");
+            GridView_NHANVIEN.DataSource = dta;
+        }
