@@ -53,3 +53,34 @@ INSERT INTO CHAMCONG VALUES('NV2',1,23,3,9000000)
 
 INSERT INTO HETHONG VALUES('ADMIN','ADMIN',1)
 INSERT INTO HETHONG VALUES('1','1',1)
+
+##frmdangnhap
+
+using System.Data;
+using System.Data.SqlClient;
+
+Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+
+#btndangnhap
+        {
+            ketnoi.KetNoi_Dulieu();
+
+            string sql_login = $"select TENDN,MATKHAU from HETHONG where TENDN = '{txtTENDN.Text}' and MATKHAU ='{txtMATKHAU.Text}'";
+            SqlCommand cmd = new SqlCommand(sql_login, ketnoi.cnn);
+
+            SqlDataReader datRed = cmd.ExecuteReader();
+            if (datRed.Read())
+            {
+                //MessageBox.Show("Đăng nhập thành công");
+                MessageBox.Show("Đăng nhập thành công");
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+#thoat
+    this.Close();
