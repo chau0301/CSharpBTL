@@ -32,3 +32,65 @@ insert into CAULACBO values ('MU', 'Manchester United', 'SAN2', 'HA NOI', 'Ghi c
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+//Frm TRANDAU
+    //19
+        Ketnoi_CSDL ketnoi = new Ketnoi_CSDL();
+        public void LAYDATA()
+        {
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("SELECT * FROM TRANDAU");
+            dataGrid_TRANDAU.DataSource = dta;
+        }
+        private void addValuesToCBO()
+        {
+            for (int i = 1900; i < 2100; i++)
+            {
+                cboNAM.Items.Add(i);
+            }
+
+            DataTable dta = new DataTable();
+            dta = ketnoi.Lay_Dulieu("select * from CAULACBO");
+            cboMACLB1.DataSource = dta;
+            cboMACLB1.DisplayMember = "MACLB";
+            cboMACLB1.ValueMember = "MACLB";
+
+            cboMACLB2.DataSource = dta;
+            cboMACLB2.DisplayMember = "MACLB";
+            cboMACLB2.ValueMember = "MACLB";
+
+            DataTable dta1 = new DataTable();
+            dta1 = ketnoi.Lay_Dulieu("select * from SANVANDONG");
+            cboMASAN.DataSource = dta1;
+            cboMASAN.DisplayMember = "MASAN";
+            cboMASAN.ValueMember = "MASAN";
+        }
+
+        public void DATABINDING()
+        {
+            txtMATD.DataBindings.Clear();
+            txtMATD.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "MATD");
+
+            cboNAM.DataBindings.Clear();
+            cboNAM.DataBindings.Add("Value", dataGrid_TRANDAU.DataSource, "NAM");
+
+            txtVONG.DataBindings.Clear();
+            txtVONG.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "VONG");
+
+            dateTimePicker_NGAYTD.DataBindings.Clear();
+            dateTimePicker_NGAYTD.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "NGAYTD");
+
+            txtVONG.DataBindings.Clear();
+            txtVONG.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "VONG");
+
+            cboMACLB1.DataBindings.Clear();
+            cboMACLB1.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "MACLB1");
+
+            cboMACLB1.DataBindings.Clear();
+            cboMACLB1.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "MACLB2");
+
+            cboMASAN.DataBindings.Clear();
+            cboMASAN.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "MASAN");
+
+            txtKETQUA.DataBindings.Clear();
+            txtKETQUA.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "KETQUA");
+        }
