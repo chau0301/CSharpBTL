@@ -94,3 +94,46 @@ insert into CAULACBO values ('MU', 'Manchester United', 'SAN2', 'HA NOI', 'Ghi c
             txtKETQUA.DataBindings.Clear();
             txtKETQUA.DataBindings.Add("Text", dataGrid_TRANDAU.DataSource, "KETQUA");
         }
+
+    //frm load
+    addValuesToCBO();
+
+    //datagrid
+
+
+    //button 
+            private void btnTHEM_Click(object sender, EventArgs e)
+        {            
+            if (cboMACLB1.Text == cboMACLB2.Text)
+            {
+                MessageBox.Show("Mã câu lạc bộ không thể trùng nhau", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string sql = $"insert into TRANDAU values('{txtMATD.Text}', {cboNAM.Value}, '{txtVONG.Text}', '{dateTimePicker_NGAYTD.Value.ToString("yyyy-MM-dd")}', '{cboMACLB1.Text}', '{cboMACLB2.Text}', '{cboMASAN}', '{txtKETQUA.Text}')";
+                ketnoi.Execute(sql.ToUpper());
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LAYDATA();
+            }
+        }
+
+        private void btnSUA_Click(object sender, EventArgs e)
+        {
+            string sql = $"update TRANDAU set NAM = N'{cboNAM.Value}',VONG = N'{txtVONG.Text}', NGAYTD = '{dateTimePicker_NGAYTD.Value.ToString("yyyy-MM-dd")}', MACLB1 = '{cboMACLB1.Text}', MACLB2 = '{cboMACLB2.Text}', MASAN = '{cboMASAN.Text}', KETQUA = '{txtKETQUA.Text}' where MATD = '{txtMATD.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+        }
+
+        private void btnXOA_Click(object sender, EventArgs e)
+        {
+            string sql = $"delete from TRANDAU where MATD = '{txtMATD.Text}'";
+            ketnoi.Execute(sql.ToUpper());
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LAYDATA();
+        }
+
+        private void btnTHOAT_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
