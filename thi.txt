@@ -5,3 +5,27 @@ insert into TRANDAU values ('M001', 2022, 1, '2022-11-28', 'MC', 'MU', 'SAN1', '
 
 insert into CAULACBO values ('MC', 'Manchester City', 'SAN1', 'CAO BANG', 'Ghi chu 1');
 insert into CAULACBO values ('MU', 'Manchester United', 'SAN2', 'HA NOI', 'Ghi chu 2');
+
+//BtN DANG NHAP
+
+            ketnoi.KetNoi_Dulieu();
+
+            string MADN = txtMADN.Text;
+            string MATKHAU = txtMATKHAU.Text;
+
+            string sql_login = $"select MADN,MATKHAU from DANGNHAP where MADN = '{MADN}' and MATKHAU ='{MATKHAU}'";
+            SqlCommand cmd = new SqlCommand(sql_login, ketnoi.cnn);
+
+            SqlDataReader datRed = cmd.ExecuteReader();
+            if (datRed.Read())
+            {
+                MessageBox.Show("Đăng nhập thành công");
+                this.Hide();
+                FrmMain frm = new FrmMain();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
