@@ -91,14 +91,6 @@ Formload -> laydata; datagrid -> databinding
             myDateTimePicker.Value = DateTime.Now;
             txtNGAYDC.Value.ToString("yyyy-MM-dd")
 
-//CRV_BAOCAO
-            Frm LOAD:
-            DataTable dta = new DataTable();
-            string sql = $"Select * from TAISAN";
-            dta = ketnoi.Lay_Dulieu(sql);
-            BAOCAO baocao = new BAOCAO();
-            baocao.SetDataSource(dta);
-            CRV_BAOCAO.ReportSource = baocao;
 
 
 //DANGNHAP BTN 
@@ -140,3 +132,11 @@ Formload -> laydata; datagrid -> databinding
             MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LAYDATA();
 
+//CRV_BAOCAO
+            Frm LOAD:
+            DataTable dta = new DataTable();
+            string sql = $"Select * from TAISAN";
+            dta = ketnoi.Lay_Dulieu(sql);
+            BAOCAO baocao = new BAOCAO();
+            baocao.SetDataSource(dta);
+            CRV_BAOCAO.ReportSource = baocao;
