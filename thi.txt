@@ -7,7 +7,10 @@ insert into CAULACBO values ('MC', 'Manchester City', 'SAN1', 'CAO BANG', 'Ghi c
 insert into CAULACBO values ('MU', 'Manchester United', 'SAN2', 'HA NOI', 'Ghi chu 2');
 
 //BtN DANG NHAP
+            //thu vien
+            using System.Data.SqlClient;
 
+            //btn
             ketnoi.KetNoi_Dulieu();
 
             string MADN = txtMADN.Text;
